@@ -1,8 +1,8 @@
-import React from 'react';
+import { useRef, useEffect } from 'react';
 
-const usePrevious = (value: any) => {
-  const ref = React.useRef<HTMLDivElement>();
-  React.useEffect(() => {
+const usePrevious: (value: unknown) => unknown = (value) => {
+  const ref = useRef<unknown>();
+  useEffect(() => {
     ref.current = value;
   }, [value]);
   return ref.current;

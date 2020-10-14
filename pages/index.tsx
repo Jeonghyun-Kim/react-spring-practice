@@ -1,17 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Tree from '../components/Tree';
+import Tree from '../components/Tree/Index';
 
 const Root = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #191b21;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 21px;
+  padding: 30px;
 `;
 
 const IndexPage: React.FC = () => {

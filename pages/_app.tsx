@@ -1,9 +1,33 @@
 import React from 'react';
-import App from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider } from 'styled-components';
 
-import '../public/css/global.css';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Noto Sans KR', sans-serif, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+      Helvetica Neue;
+    line-height: 1.6;
+    font-size: 16px;
+
+    /* background: #191b21; */
+  }
+
+  #__next {
+    width: 100%;
+    height: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+`;
 
 const theme = {
   colors: {
@@ -11,12 +35,16 @@ const theme = {
   },
 };
 
-export default class MyApp extends App {
-  componentDidMount(): void {}
-
-  render(): JSX.Element {
-    const { Component, pageProps } = this.props;
-    return (
+const App: ({
+  Component,
+  pageProps,
+}: {
+  Component: any;
+  pageProps: any;
+}) => JSX.Element = ({ Component, pageProps }) => {
+  return (
+    <>
+      <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Head>
           <meta
@@ -32,6 +60,8 @@ export default class MyApp extends App {
         </Head>
         <Component {...pageProps} />
       </ThemeProvider>
-    );
-  }
-}
+    </>
+  );
+};
+
+export default App;
