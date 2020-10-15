@@ -15,8 +15,8 @@ const Root = styled.div`
   height: 100%;
   & > div {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     & > div {
       background-size: cover;
       background-repeat: no-repeat;
@@ -62,7 +62,7 @@ const SliderPage: React.FC = () => {
       if (i < index.current - 1 || i > index.current + 1)
         return { display: 'none' };
       const xT = (i - index.current) * innerWidth + (down ? x - lastX : 0);
-      const scaleT = down ? 1 - Math.abs(x - lastX) / innerWidth / 2 : 1;
+      const scaleT = down ? 1 - Math.abs(x - lastX) / innerWidth / 4 : 1;
       return { x: xT, scale: scaleT, display: 'block' };
     });
   });

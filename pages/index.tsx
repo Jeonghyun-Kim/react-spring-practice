@@ -24,6 +24,11 @@ const IndexPage: React.FC = () => {
             <h4>Draggable List</h4>
           </a>
         </Link>
+        <Link href="/slider">
+          <a>
+            <h4>Page Slider</h4>
+          </a>
+        </Link>
       </Root>
     </>
   );
