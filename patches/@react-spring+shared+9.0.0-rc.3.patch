@@ -1,8 +1,8 @@
 diff --git a/node_modules/@react-spring/shared/package.json b/node_modules/@react-spring/shared/package.json
-index 15df9b4..fdc5697 100644
+index b89e12f..f34f95e 100644
 --- a/node_modules/@react-spring/shared/package.json
 +++ b/node_modules/@react-spring/shared/package.json
-@@ -51,6 +54,5 @@
+@@ -51,6 +57,5 @@
    "publishConfig": {
      "access": "public"
    },

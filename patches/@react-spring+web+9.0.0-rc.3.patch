@@ -1,8 +1,8 @@
 diff --git a/node_modules/@react-spring/web/package.json b/node_modules/@react-spring/web/package.json
-index e295a7f..b770eb0 100644
+index 606fcc7..86ff9a2 100644
 --- a/node_modules/@react-spring/web/package.json
 +++ b/node_modules/@react-spring/web/package.json
-@@ -69,7 +70,6 @@
+@@ -69,7 +73,6 @@
    "publishConfig": {
      "access": "public"
    },
