@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import DraggableList from '../components/DraggableList';
 
 const Root = styled.div`
+  position: fixed;
   width: 100%;
   height: 100%;
   display: grid;

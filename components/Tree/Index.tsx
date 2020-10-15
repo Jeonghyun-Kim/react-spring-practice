@@ -5,7 +5,7 @@ import { animated } from '@react-spring/web';
 import usePrevious from '../../lib/hooks/usePrevious';
 import useMeasure from '../../lib/hooks/useMeasure';
 import { Frame, Title, Content } from './styles';
-import { PlusSquare, MinusSquare, CloseSquare } from '../Icons';
+import { PlusSquare, MinusSquare, CloseSquare } from '../icons';
 
 interface props {
   name: string | React.ReactNode;
