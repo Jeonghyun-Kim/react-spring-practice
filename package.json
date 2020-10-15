@@ -4,15 +4,17 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@react-spring/core": "^9.0.0-rc.3",
-    "@react-spring/web": "^9.0.0-rc.3",
+    "@react-spring/core": "9.0.0-rc.3",
+    "@react-spring/web": "9.0.0-rc.3",
     "lodash-move": "^1.1.1",
     "next": "latest",
+    "patch-package": "^6.2.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-transition-group": "^4.4.1",
