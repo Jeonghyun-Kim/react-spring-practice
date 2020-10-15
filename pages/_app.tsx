@@ -52,7 +52,7 @@ const App: ({
             content="width=device-width, initial-scale=1.0"
           />
           <meta name="theme-color" content="#000000" />
-          <title>react-spring playground</title>
+          <title>react-spring Examples</title>
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
             rel="stylesheet"
