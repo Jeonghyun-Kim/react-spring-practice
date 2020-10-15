@@ -5,15 +5,6 @@
 .pnp.js
 package-lock.json
 /node_modules/*
-!/node_modules/@react-spring
-/node_modules/@react-spring/animated/*
-!/node_modules/@react-spring/animated/package.json
-/node_modules/@react-spring/core/*
-!/node_modules/@react-spring/core/package.json
-/node_modules/@react-spring/shared/*
-!/node_modules/@react-spring/shared/package.json
-/node_modules/@react-spring/web/*
-!/node_modules/@react-spring/web/package.json
 
 # testing
 /coverage
