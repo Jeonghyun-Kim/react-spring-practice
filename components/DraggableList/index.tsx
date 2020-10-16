@@ -19,15 +19,15 @@ const fn = (
     ? {
         y: curIndex * 100 + y,
         scale: 1.1,
-        zIndex: '1',
+        zIndex: 1,
         shadow: 15,
         immediate: (n: string) => n === 'y' || n === 'zIndex',
       }
     : {
         y: order.indexOf(index) * 100,
         scale: 1,
-        zIndex: '0',
-        shadow: 1,
+        zIndex: 0,
+        shadow: 5,
         immediate: false,
       };
 
