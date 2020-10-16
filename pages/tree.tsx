@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import Tree from '../components/Tree/hello';
+import Tree from '../components/Tree';
 
 const Root = styled.div`
   padding: 30px;
