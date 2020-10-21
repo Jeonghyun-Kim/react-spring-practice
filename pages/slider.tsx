@@ -50,7 +50,7 @@ const SliderPage: React.FC = () => {
   );
 
   const bind = useDrag(({ down, offset: [x], lastOffset: [lastX], cancel }) => {
-    if (down && Math.abs(x - lastX) > innerWidth / 2) {
+    if (down && Math.abs(x - lastX) > innerWidth / 3) {
       index.current = clamp(
         index.current + (x - lastX > 0 ? -1 : 1),
         0,

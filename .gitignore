@@ -5,6 +5,7 @@
 .pnp.js
 package-lock.json
 /node_modules/*
+!/node_modules/@react-spring
 
 # testing
 /coverage
