@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { useSprings } from '@react-spring/core';
-import { a } from '@react-spring/web';
+// import { useSprings } from '@react-spring/core';
+// import { a } from '@react-spring/web';
+import { useSprings, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { useWindowSize } from 'react-use';
 
@@ -36,18 +38,14 @@ const pages = [
   '/images/4.jpeg',
 ];
 
-const SliderPage: React.FC = () => {
+const SliderPage = () => {
   const { width: innerWidth } = useWindowSize();
   const index = React.useRef(0);
-  const [springs, setSprings] = useSprings(
-    pages.length,
-    (i: number) => ({
-      x: (i - index.current) * innerWidth,
-      scale: 1,
-      display: 'block',
-    }),
-    [innerWidth],
-  );
+  const [springs, setSprings] = useSprings(pages.length, (i) => ({
+    x: (i - index.current) * innerWidth,
+    scale: 1,
+    display: 'block',
+  }));
 
   const bind = useDrag(({ down, offset: [x], lastOffset: [lastX], cancel }) => {
     if (down && Math.abs(x - lastX) > innerWidth / 3) {
@@ -58,7 +56,7 @@ const SliderPage: React.FC = () => {
       );
       if (cancel) cancel();
     }
-    setSprings((i: number) => {
+    setSprings((i) => {
       if (i < index.current - 1 || i > index.current + 1)
         return { display: 'none' };
       const xT = (i - index.current) * innerWidth + (down ? x - lastX : 0);
@@ -69,7 +67,7 @@ const SliderPage: React.FC = () => {
 
   const handleRight = React.useCallback(() => {
     index.current = clamp(index.current + 1, 0, pages.length - 1);
-    setSprings((i: number) => {
+    setSprings((i) => {
       if (i < index.current - 1 || i > index.current + 1)
         return { display: 'none' };
       const xT = (i - index.current) * innerWidth;
@@ -79,7 +77,7 @@ const SliderPage: React.FC = () => {
 
   const handleLeft = React.useCallback(() => {
     index.current = clamp(index.current - 1, 0, pages.length - 1);
-    setSprings((i: number) => {
+    setSprings((i) => {
       if (i < index.current - 1 || i > index.current + 1)
         return { display: 'none' };
       const xT = (i - index.current) * innerWidth;
@@ -88,7 +86,7 @@ const SliderPage: React.FC = () => {
   }, [innerWidth, setSprings]);
 
   React.useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
+    const handler = (e) => {
       if (e.key === 'ArrowRight') handleRight();
       if (e.key === 'ArrowLeft') handleLeft();
     };
@@ -104,12 +102,21 @@ const SliderPage: React.FC = () => {
       <Root>
         {typeof window !== 'undefined' &&
           springs.map(({ x, display, scale }, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <a.div {...bind()} key={i} style={{ display: display as never, x }}>
-              <a.div
-                style={{ scale, backgroundImage: `url(${pages[i]})` as never }}
+            <animated.div
+              {...bind()}
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+              style={{
+                display,
+                transform: x.interpolate((xT) => `translate3d(${xT}px,0,0)`),
+              }}>
+              <animated.div
+                style={{
+                  transform: scale.interpolate((s) => `scale(${s})`),
+                  backgroundImage: `url(${pages[i]})`,
+                }}
               />
-            </a.div>
+            </animated.div>
           ))}
       </Root>
     </>
