@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import Head from 'next/head';
@@ -65,8 +66,7 @@ const SliderPage = () => {
     });
   });
 
-  const handleRight = React.useCallback(() => {
-    index.current = clamp(index.current + 1, 0, pages.length - 1);
+  const moveSprings = React.useCallback(() => {
     setSprings((i) => {
       if (i < index.current - 1 || i > index.current + 1)
         return { display: 'none' };
@@ -75,24 +75,36 @@ const SliderPage = () => {
     });
   }, [innerWidth, setSprings]);
 
+  const handleRight = React.useCallback(() => {
+    index.current = clamp(index.current + 1, 0, pages.length - 1);
+    moveSprings();
+  }, [moveSprings]);
+
   const handleLeft = React.useCallback(() => {
     index.current = clamp(index.current - 1, 0, pages.length - 1);
-    setSprings((i) => {
-      if (i < index.current - 1 || i > index.current + 1)
-        return { display: 'none' };
-      const xT = (i - index.current) * innerWidth;
-      return { x: xT, display: 'block' };
-    });
-  }, [innerWidth, setSprings]);
+    moveSprings();
+  }, [moveSprings]);
+
+  const handleGoTo = React.useCallback(
+    (i) => {
+      index.current = i;
+      moveSprings();
+    },
+    [moveSprings],
+  );
 
   React.useEffect(() => {
     const handler = (e) => {
       if (e.key === 'ArrowRight') handleRight();
       if (e.key === 'ArrowLeft') handleLeft();
+      if (e.key === '1') handleGoTo(0);
+      if (e.key === '2') handleGoTo(1);
+      if (e.key === '3') handleGoTo(2);
+      if (e.key === '4') handleGoTo(3);
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [handleLeft, handleRight]);
+  }, [handleLeft, handleRight, handleGoTo]);
 
   return (
     <>
