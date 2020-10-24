@@ -21,6 +21,7 @@ const Root = styled.div`
     width: 100%;
     height: 100%;
     & > div {
+      position: relative;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -28,6 +29,16 @@ const Root = styled.div`
       height: 100%;
       box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
         0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
+      .box {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        background-color: rebeccapurple;
+        border-radius: 15px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 `;
@@ -126,8 +137,9 @@ const SliderPage = () => {
                 style={{
                   transform: scale.interpolate((s) => `scale(${s})`),
                   backgroundImage: `url(${pages[i]})`,
-                }}
-              />
+                }}>
+                <div className="box" />
+              </animated.div>
             </animated.div>
           ))}
       </Root>
