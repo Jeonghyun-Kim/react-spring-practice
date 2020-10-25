@@ -49,14 +49,13 @@ const SliderPage: React.FC = () => {
     [innerWidth],
   );
 
-  const bind = useDrag(({ down, offset: [x], lastOffset: [lastX], cancel }) => {
-    if (down && Math.abs(x - lastX) > innerWidth / 3) {
+  const bind = useDrag(({ down, offset: [x], lastOffset: [lastX], last }) => {
+    if (last && Math.abs(x - lastX) > innerWidth / 2) {
       index.current = clamp(
         index.current + (x - lastX > 0 ? -1 : 1),
         0,
         pages.length - 1,
       );
-      if (cancel) cancel();
     }
     setSprings((i: number) => {
       if (i < index.current - 1 || i > index.current + 1)
